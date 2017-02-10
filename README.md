@@ -1,2 +1,2 @@
-Project : coinpurse
-Name : Sathira Kittisukmongkol
+##Project : coinpurse
+##Name : Sathira Kittisukmongkol
