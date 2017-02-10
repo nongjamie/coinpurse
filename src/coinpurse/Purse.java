@@ -151,39 +151,28 @@ public class Purse {
 				box_show.add(i);
 			}
 			if(sum==amount){
-				
 				break;
 			}
 		}
+		if(sum==amount){
 		Coin[] newBoxShow = new Coin[box_show.size()];
 		for(int i=0;i<box_show.size();i++){
 			newBoxShow[i] = money.get(box_show.get(i));
 		}
-		
-		
-	
-//		double sum = 0;
-//		int count = 0;
-//		for(int j=0;sum<amount;j++){
-//			sum = sum + money.get(j).getValue();
-//			count++;
-//		}
-//		if(sum!=amount){
-//			count = count - 1;
-//		}
-//		if(sum==amount){
-//			Coin[] new_box2 = new Coin[count];
-//			int z=0;
-//			for(int k=0;k<count;k++){
-//				new_box2[k] = money.get(k);
-//				z=k;
-//			}
-//			for(int i=0;i<=z;i++){
-//				money.remove(i);
-//			}
-//			return new_box2 ;
-//		}
+//		System.out.println(Arrays.toString(newBoxShow));
+//		System.out.println(money);
+		for(int i=newBoxShow.length-1;i!=-1;i--){
+			for(int j=money.size()-1;j!=-1;j--){
+				if(newBoxShow[i].getValue()==money.get(j).getValue()){
+					money.remove(j);
+					break;
+				}
+			}
+		}
+//		System.out.println(money);
 		return newBoxShow;
+		}
+		return null;
 
 	}
 

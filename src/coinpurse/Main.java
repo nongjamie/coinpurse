@@ -14,20 +14,27 @@ public class Main {
      * @param args not used
      */
     public static void main( String[] args ) {
-    	Purse purse = new Purse(3);
+    	Purse purse = new Purse(8);
     	System.out.println(purse.getBalance());
     	System.out.println(purse.count());
     	System.out.println(purse.isFull());
+    	System.out.println(purse.insert(new Coin(1)));
+    	System.out.println(purse.insert(new Coin(1)));
+    	System.out.println(purse.insert(new Coin(2)));
+    	System.out.println(purse.insert(new Coin(2)));
+    	System.out.println(purse.insert(new Coin(5)));
     	System.out.println(purse.insert(new Coin(5)));
     	System.out.println(purse.insert(new Coin(10)));
-    	System.out.println(purse.insert(new Coin(0)));
-    	System.out.println(purse.insert(new Coin(1)));
-    	System.out.println(purse.insert(new Coin(5)));
+    	System.out.println(purse.insert(new Coin(10)));
     	System.out.println(purse.count());
     	System.out.println(purse.isFull());
     	System.out.println(purse.getBalance());
     	System.out.println(purse.toString());
-    	System.out.println(Arrays.toString(purse.withdraw(11.0)));
+    	System.out.println(Arrays.toString(purse.withdraw(12.0)));
+    	System.out.println(purse.getBalance());
+    	System.out.println(Arrays.toString(purse.withdraw(12.0)));
+    	System.out.println(purse.getBalance());
+    	System.out.println(Arrays.toString(purse.withdraw(12.0)));
     	System.out.println(purse.getBalance());
 
     	
