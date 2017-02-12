@@ -11,11 +11,11 @@ import org.junit.Test;
  * This is a JUnit 4 test.  
  * To run these tests, right click on this file (in Navigator pane)
  * and choose Run As -> JUnit test
- * @author  Resident Evil
+ * @author  Sathira Kittisukmongkol
  * @version 2017.02.01
  */
 public class PurseTest {
-	/** tolerance for comparing two double values */
+	/** Tolerance for comparing two double values. */
 	private static final double TOL = 1.0E-6;
     /**
      * Sets up the test fixture.
@@ -50,7 +50,7 @@ public class PurseTest {
         assertTrue( purse.insert(coin3));
         assertTrue( purse.insert(coin2));
         assertEquals( 3, purse.count() );
-        // purse is full so insert should fail
+        // Purse is full so insert should fail.
         assertFalse( purse.insert(new Coin(1)) );
     }
     
@@ -67,19 +67,19 @@ public class PurseTest {
 
     @Test
     public void testIsFull()
-    {   // borderline case (capacity 1)
+    {   // Borderline case (capacity 1).
         Purse purse = new Purse(1);
         assertFalse( purse.isFull() );
         purse.insert( new Coin(1) );
         assertTrue( purse.isFull() );
-        // real test
+        // Real test.
         int capacity = 4;
         purse = new Purse(capacity);
         for(int k=1; k<=capacity; k++) {
             assertFalse(purse.isFull());
             purse.insert( new Coin(k) );
         }
-        // full now
+        // Full now.
         assertTrue( purse.isFull() );
         assertFalse( purse.insert( new Coin(5) ) );
     }
@@ -150,8 +150,8 @@ public class PurseTest {
 	
 	/**
 	 * Sum the value of some coins.
-	 * @param coins array of coins
-	 * @return sum of values of the coins
+	 * @param coins array of coins.
+	 * @return sum of values of the coins.
 	 */
 	private double sumValue(Coin [] coins)  {
 		if (coins == null) return 0;

@@ -1,6 +1,6 @@
 package coinpurse;
 
-//TODO import ArrayList and Collections (so you can use Collections.sort())
+//Import ArrayList and Collections so we can use Collections.sort().
 import java.util.*;
 import java.util.Collections;
 
@@ -10,13 +10,14 @@ import java.util.Collections;
  *  and check if the purse is full.
  *  When you withdraw money, the coin purse decides which
  *  coins to remove.
- *  
- *  @author your name
+ * 
+ *  @author Sathira Kittisukmongkol
  */
 public class Purse {
 	/** Collection of objects in the purse. */
-	//TODO declare a List of Coins named "money".
+	// A list of coin.
 	List<Coin> money;
+	// Default initial money in purse is 0.
 	private double countBalance=0.0;
 
 	/** Capacity is maximum number of coins the purse can hold.
@@ -107,30 +108,11 @@ public class Purse {
 	 *    or null if cannot withdraw requested amount.
 	 */
 	public Coin[] withdraw( double amount ) {
-		//TODO don't allow to withdraw amount < 0
-
-		/*
-		 * See lab sheet for outline of a solution, 
-		 * or devise your own solution.
-		 */
-
-		// Did we get the full amount?
-		// This code assumes you decrease amount each time you remove a coin.
-		//		if ( amount > 0 )
-		//		{	// failed. Don't change the contents of the purse.
-		//			return null;
-		//		}
-		//
-		//		// Success.
-		//		// Remove the coins you want to withdraw from purse,
-		//		// and return them as an array.
-		//		// Use list.toArray( array[] ) to copy a list into an array.
-		//		// toArray returns a reference to the array itself.
-		//		  return new Coin[0]; //TODO replace this with real code
-
+		// If amount is more than money in the purse so we can't withdraw.
 		if(amount>countBalance){
 			return null;
 		}
+		// If amount is equal to the money in the purse so we withdraw every coins in the purse.
 		if(amount==countBalance){
 			Collections.sort(money);
 			Collections.reverse(money);
@@ -141,6 +123,7 @@ public class Purse {
 			money.clear();
 			return new_box;
 		}
+		// If amount is less than money in the purse so we can withdraw.
 		Collections.sort(money);
 		Collections.reverse(money);
 		double sum = 0;
@@ -155,22 +138,19 @@ public class Purse {
 			}
 		}
 		if(sum==amount){
-		Coin[] newBoxShow = new Coin[box_show.size()];
-		for(int i=0;i<box_show.size();i++){
-			newBoxShow[i] = money.get(box_show.get(i));
-		}
-//		System.out.println(Arrays.toString(newBoxShow));
-//		System.out.println(money);
-		for(int i=newBoxShow.length-1;i!=-1;i--){
-			for(int j=money.size()-1;j!=-1;j--){
-				if(newBoxShow[i].getValue()==money.get(j).getValue()){
-					money.remove(j);
-					break;
+			Coin[] newBoxShow = new Coin[box_show.size()];
+			for(int i=0;i<box_show.size();i++){
+				newBoxShow[i] = money.get(box_show.get(i));
+			}
+			for(int i=newBoxShow.length-1;i!=-1;i--){
+				for(int j=money.size()-1;j!=-1;j--){
+					if(newBoxShow[i].getValue()==money.get(j).getValue()){
+						money.remove(j);
+						break;
+					}
 				}
 			}
-		}
-//		System.out.println(money);
-		return newBoxShow;
+			return newBoxShow;
 		}
 		return null;
 
@@ -181,10 +161,8 @@ public class Purse {
 	 * It can return whatever is a useful description.
 	 */
 	public String toString() {
-		String ans = capacity+" coins with value "+countBalance;
+		String ans = money.size()+" coins with value "+countBalance;
 		return ans;
 	}
 
 }
-//TODO remove the TODO comments after you complete them.
-//TODO When you are finished, there should not be any TODO. Including this one.

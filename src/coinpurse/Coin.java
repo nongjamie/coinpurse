@@ -1,20 +1,21 @@
 package coinpurse;
-//TODO fix this Javadoc. It should be written as a COMPLETE SENTENCE WITH PERIOD.
+
 /**
- * a coin with a monetary value and currency
- * @author
+ * A coin with a monetary value and currency.
+ * @author Sathira Kittisukmongkol
  */
-//TODO declare that Coin implements Comparable<Coin>
-public class Coin implements Comparable<Coin>{
+public class Coin implements Comparable<Coin> {
+	//Set the default currency to be Baht.
 	public static final String DEFAULT_CURRENCY = "Baht";
-	/** Value of the coin. */
+	//Value of the coin.
 	private final double value;
-	/** The currency, of course. */
+	//Currency of the coin.
 	private final String currency;
 
 	/**
+	 * This is the constructor.
 	 * A coin with given value using the default currency.
-	 * @param value
+	 * @param value , set the value of the coin.
 	 */
 	public Coin( double value ) {
 		this.value = value;
@@ -23,21 +24,32 @@ public class Coin implements Comparable<Coin>{
 
 	/**
 	 * A coin with given value and currency.
-	 * @param value
-	 * @param currency
+	 * @param value , set the value to the coin.
+	 * @param currency , set the currency to the coin.
 	 */
-	public Coin( double value, String currency ) {
+	public Coin( double value , String currency ) {
 		this.value = value;
 		this.currency = currency;
 	}
 
-	//TODO Write a getValue() method and javadoc.
-	public double getValue( ) { return value; } 
+	/*
+	 * To get value of the coin.
+	 */
+	public double getValue() { 
+		return value; 
+		} 
 
-	//TODO Write a getCurrency() method and javadoc.
-	public String getCurrency() { return currency; }
+	/*
+	 * To get the currency of the coin.
+	 */
+	public String getCurrency() { 
+		return currency; 
+		}
 
-	//TODO Write an equals(Object) method.
+	/*
+	 * To compare the coin.
+	 * @param obj , the other coin.
+	 */
 	public boolean equals(Object obj) {
 		if(obj == null){
 			return false;
@@ -48,20 +60,22 @@ public class Coin implements Comparable<Coin>{
 		Coin other = (Coin)obj;
 		return ((other.value == this.value)&&(other.currency.equals(this.currency)));
 	}
-
-	//TODO Write a compareTo method and implement Comparable.
-
-
-
-	//TODO write a toString() method. See labsheet for what to return.
+	
+	/*
+	 * To show the detail of the coin.
+	 * @return sentence , the details of the coin.
+	 */
 	public String toString() { 
 		String sentence = this.value+"-"+this.currency;
 		return sentence; 
 	}
-
+	
+	/*
+	 * CompareTo method is to compare the value of the coin.
+	 * @param obj , obj is the object in Coin class , we will compare its value.
+	 */
 	@Override
-	public int compareTo(Coin obj) {
-		// TODO Auto-generated method stub
+	public int compareTo( Coin obj ) {
 		if(obj.value > this.value){
 			return -1;
 		}
@@ -71,7 +85,5 @@ public class Coin implements Comparable<Coin>{
 		return 0;
 	}
 
-	//TODO Write good Javadoc comments on all methods.
-
 }
-//TODO remove the TODO comments after you complete them! Including this one!
+
