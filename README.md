@@ -4,15 +4,15 @@ Coinpurse
 Sathira Kittisukmongkol
 #CoinPurse
 This CoinPurse project has 6 classes.
-##Coin
+##1.Coin
 This class is about the value and currency of the coin.
-##CoinUtil
+##2.CoinUtil
 This class is about more methods for the coin.
-##ConsoleDialog
+##3.ConsoleDialog
 This class is to deposit and withdraw the coin.
-##Main
+##4.Main
 This class is to run the program.
-##Purse
+##5.Purse
 This class is to store coins and check the purse.
-##PurseTest
+##6.PurseTest
 This class is to check the Purse by JUnit 4 test.
