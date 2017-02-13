@@ -1,2 +1,4 @@
-##Project : coinpurse
-##Name : Sathira Kittisukmongkol
+#Project
+Coinpurse
+#Author Name
+Sathira Kittisukmongkol
