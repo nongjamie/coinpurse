@@ -4,7 +4,7 @@ package coinpurse;
  * A coin with a monetary value and currency.
  * @author Sathira Kittisukmongkol
  */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Valuable{
 	//Set the default currency to be Baht.
 	public static final String DEFAULT_CURRENCY = "Baht";
 	//Value of the coin.
@@ -69,21 +69,25 @@ public class Coin implements Comparable<Coin> {
 		String sentence = this.value+"-"+this.currency;
 		return sentence; 
 	}
-	
+
 	/*
 	 * CompareTo method is to compare the value of the coin.
 	 * @param obj , obj is the object in Coin class , we will compare its value.
 	 */
 	@Override
-	public int compareTo( Coin obj ) {
-		if(obj.value > this.value){
-			return -1;
+	public int compareTo(Valuable obj) {
+		if(obj.getValue() > this.getValue()){
+			return +1;
 		}
-		if(obj.value < this.value){
-			return 1;
+		if(obj.getValue() < this.getValue()){
+			return -1;
 		}
 		return 0;
 	}
+	
+	
+	
+
 
 }
 
