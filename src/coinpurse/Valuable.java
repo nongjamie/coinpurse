@@ -10,7 +10,7 @@ public interface Valuable extends Comparable<Valuable>{
 	 * Get the monetary value of this object , in its own currency.
 	 * @return the value of this object.
 	 */
-	public double getValue();
+	 double getValue();
 	
 	/*
 	 * Get the monetary currency of this object , in its own currency.

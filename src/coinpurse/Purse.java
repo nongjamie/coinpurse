@@ -89,7 +89,8 @@ public class Purse {
 	 */
 	public boolean insert( Valuable coin ) {
 		// if the purse is already full then can't insert anything.
-		if(money.size()==capacity){
+//		if(money.size()==capacity){
+		if( isFull() ){
 			return false;
 		}
 		if(coin.getValue()<=0){
