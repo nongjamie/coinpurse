@@ -110,6 +110,10 @@ public class Purse {
 	 */
 	public Valuable[] withdraw( double amount ) {
 		List<Valuable> listWithdraw = new ArrayList<>();
+		Collections.sort(money);
+		System.out.println(money.toString());
+//		Collections.reverse(money);
+//		System.out.println(money.toString());
 		for(int i=money.size()-1;i>=0;i--){
 			Valuable x = money.get(i);
 			if(x.getValue()<=amount){

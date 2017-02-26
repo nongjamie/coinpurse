@@ -1,6 +1,7 @@
 package coinpurse;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
 
 /**
  * A main class to create objects and connect objects together.
@@ -21,6 +22,9 @@ public class Main {
     	Purse abc = new Purse(10);
     	ConsoleDialog ui = new ConsoleDialog(abc);
     	ui.run();
+//    	BankNote b = new BankNote(100);
+    	
+    	
     }
     
 }

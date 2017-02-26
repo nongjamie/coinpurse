@@ -64,7 +64,7 @@ public class Coin extends AbstractValuable {
 	 * @return sentence , the details of the coin.
 	 */
 	public String toString() { 
-		String sentence = this.value+"-"+this.currency;
+		String sentence = super.value+"-"+super.currency;
 		return sentence; 
 	}
 

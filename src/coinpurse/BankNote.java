@@ -24,6 +24,11 @@ public class BankNote extends AbstractValuable {
 		this.serialNumber = nextSerialNumber++;
 	}
 	
+//	public BankNote( double value , long serialNumber ) {
+//		super(value,"Baht");
+//		this.serialNumber = serialNumber;
+//	}
+	
 	/**
 	 * A banknote with given value and currency.
 	 * @param value , set the value to the banknote.
@@ -77,7 +82,7 @@ public class BankNote extends AbstractValuable {
 	 * @return sentence , the details of the banknote.
 	 */
 	public String toString(){
-		String ans = value+"-"+currency+" note ["+serialNumber+"]";
+		String ans = super.value+"-"+currency+" note ["+serialNumber+"]";
 		return ans;
 	}
 	

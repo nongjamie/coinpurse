@@ -13,10 +13,10 @@ public abstract class AbstractValuable implements Valuable{
 	public int compareTo( Valuable obj ) {
 		if( obj.getCurrency().equals( this.getCurrency() ) ) {
 			if( obj.getValue() > this.getValue() ) {
-				return +1;
+				return -1;
 			}
 			else if( obj.getValue() < this.getValue() ) {
-				return -1;
+				return +1;
 			}
 			else {
 				return 0;
