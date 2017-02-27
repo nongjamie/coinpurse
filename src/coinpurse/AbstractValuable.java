@@ -2,8 +2,8 @@ package coinpurse;
 
 public abstract class AbstractValuable implements Valuable{
 
-	double value;
-	String currency;
+	protected double value;
+	protected String currency;
 
 	public AbstractValuable( double value , String currency ) {
 		this.value = value;

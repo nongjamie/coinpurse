@@ -1,6 +1,7 @@
 package coinpurse;
 
 public class ThaiMoneyFactory extends MoneyFactory{
+	private static long nextSerialNumber = 1_000_000;
 	String currency = "Baht";
 	
 	@Override
@@ -10,7 +11,7 @@ public class ThaiMoneyFactory extends MoneyFactory{
 			return coin;
 		}
 		else if( value==20 || value==50 || value==100 || value==500 || value==1000 ) {
-			BankNote banknote = new BankNote( value , "Baht");
+			BankNote banknote = new BankNote( value , "Baht" , nextSerialNumber++);
 			return banknote;
 		}
 		else {

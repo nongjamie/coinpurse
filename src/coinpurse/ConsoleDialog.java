@@ -20,7 +20,7 @@ public class ConsoleDialog {
 	// This object is to get the purse.
 	private Purse purse;
 
-	private MoneyFactory moneyFactory = MoneyFactory.getMoneyFactory("thaimoney");
+	private MoneyFactory moneyFactory = MoneyFactory.getMoneyFactory("malaymoney");
 	
 
 	/**
