@@ -88,8 +88,6 @@ public class Purse {
 	 * @return true if coin inserted, false if can't insert
 	 */
 	public boolean insert( Valuable coin ) {
-		// if the purse is already full then can't insert anything.
-//		if(money.size()==capacity){
 		if( isFull() ){
 			return false;
 		}
@@ -111,9 +109,6 @@ public class Purse {
 	public Valuable[] withdraw( double amount ) {
 		List<Valuable> listWithdraw = new ArrayList<>();
 		Collections.sort(money);
-		System.out.println(money.toString());
-//		Collections.reverse(money);
-//		System.out.println(money.toString());
 		for(int i=money.size()-1;i>=0;i--){
 			Valuable x = money.get(i);
 			if(x.getValue()<=amount){
@@ -137,7 +132,7 @@ public class Purse {
 	 * It can return whatever is a useful description.
 	 */
 	public String toString() {
-		String ans = money.size()+" items with value "+this.getBalance()+" Baht.";
+		String ans = money.size()+" items with value "+this.getBalance()+" "+MoneyFactory.currency;
 		return ans;
 	}
 

@@ -19,8 +19,8 @@ public class ConsoleDialog {
 	private static Scanner console = new Scanner(System.in);
 	// This object is to get the purse.
 	private Purse purse;
-
-	private MoneyFactory moneyFactory = MoneyFactory.getMoneyFactory("malaymoney");
+	// To create the object of malay/thai money in MoneyFactory class.
+	private MoneyFactory moneyFactory = MoneyFactory.getMoneyFactory("thaimoney");
 	
 
 	/**
@@ -57,11 +57,11 @@ public class ConsoleDialog {
 			}
 		}
 		// Confirm that we are quitting.
-		System.out.println("Goodbye. The purse still has " + purse.getBalance() + " " + CURRENCY);
+		System.out.println("Goodbye. The purse still has " + purse.getBalance() + " " + moneyFactory.currency);
 	}
 
 	/**
-	 * Ask the user how many coins to deposit into purse, then deposit them.
+	 * Ask the user how many items to deposit into purse, then deposit them.
 	 * Show result of success or failure.
 	 */
 	public void depositDialog() {
@@ -89,8 +89,8 @@ public class ConsoleDialog {
 	}
 
 	/**
-	 * Ask how much money (Baht) to withdraw and then do it. After withdraw,
-	 * show the values of the coins we withdrew.
+	 * Ask how much money to withdraw and then do it. After withdraw,
+	 * show the values of the money we withdraw.
 	 */
 	public void withdrawDialog() {
 		System.out.print("How much to withdraw? ");

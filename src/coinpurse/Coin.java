@@ -6,11 +6,18 @@ package coinpurse;
  */
 public class Coin extends AbstractValuable {
 
-	public Coin( double value ){
-		super( value , "Baht");
+	/**
+	 * This is the constructor.
+	 * A coin with given value.
+	 * Set the currency to Baht.
+	 * @param value , set the value of the coin.
+	 */
+	public Coin( double value ) {
+		super( value , "Baht." );
 	}
 	
 	/**
+	 * This is the constructor.
 	 * A coin with given value and currency.
 	 * @param value , set the value to the coin.
 	 * @param currency , set the currency to the coin.
@@ -19,8 +26,10 @@ public class Coin extends AbstractValuable {
 		super( value , currency );
 	}
 	
-	/*
+	/**
 	 * To show the detail of the coin.
+	 * If the currency is Riggit so it's from malay factory.
+	 * It the currency is Baht so it's from thai factory.
 	 * @return sentence , the details of the coin.
 	 */
 	public String toString() { 

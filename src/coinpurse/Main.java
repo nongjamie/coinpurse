@@ -21,10 +21,7 @@ public class Main {
     public static void main( String[] args ) {
     	Purse abc = new Purse(10);
     	ConsoleDialog ui = new ConsoleDialog(abc);
-    	ui.run();
-//    	BankNote b = new BankNote(100);
-    	
-    	
+    	ui.run();    	
     }
-    
+
 }
