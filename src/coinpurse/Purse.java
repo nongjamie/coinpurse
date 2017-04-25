@@ -2,7 +2,6 @@ package coinpurse;
 
 //Import ArrayList and Collections so we can use Collections.sort().
 import java.util.*;
-import java.util.Collections;
 
 /**
  *  A coin purse contains coins.
@@ -13,12 +12,12 @@ import java.util.Collections;
  * 
  *  @author Sathira Kittisukmongkol
  */
-public class Purse {
+public class Purse extends Observable {
 	/** Collection of objects in the purse. */
 	// A list of coin.
 	List<Valuable> money;
 	// Default initial money in purse is 0.
-	private double countBalance=0.0;
+	private double countBalance = 0.0;
 
 	/** Capacity is maximum number of coins the purse can hold.
 	 *  Capacity is set when the purse is created and cannot be changed.
@@ -91,10 +90,12 @@ public class Purse {
 		if( isFull() ){
 			return false;
 		}
-		if(coin.getValue()<=0){
+		if( coin.getValue()<=0 ){
 			return false;
 		}
 		money.add(coin);
+		setChanged();
+		notifyObservers();
 		return true;
 	}
 
@@ -122,6 +123,8 @@ public class Purse {
 			}
 			Valuable[] listToReturn = new Valuable[listWithdraw.size()];
 			listWithdraw.toArray(listToReturn);
+			setChanged();
+			notifyObservers();
 			return listToReturn;
 		}
 		return null;
@@ -135,5 +138,6 @@ public class Purse {
 		String ans = money.size()+" items with value "+this.getBalance()+" "+MoneyFactory.currency;
 		return ans;
 	}
+	
 
 }

@@ -59,7 +59,7 @@ public abstract class MoneyFactory {
 	 * @return moneyFactory.createMoney(values) , send value to createMoney method.
 	 * @throws IllegalArgumentException
 	 */
-	Valuable createMoney(String value) throws IllegalArgumentException {
+	Valuable createMoney(String value) {
 		try {
 			double values = Double.parseDouble(value);
 			return moneyFactory.createMoney(values);
