@@ -3,6 +3,8 @@ package coinpurse;
 //Import ArrayList and Collections so we can use Collections.sort().
 import java.util.*;
 
+import coinpurse.strategy.WithdrawStrategy;
+
 /**
  *  A coin purse contains coins.
  *  You can insert coins, withdraw money, check the balance,
@@ -18,6 +20,8 @@ public class Purse extends Observable {
 	List<Valuable> money;
 	// Default initial money in purse is 0.
 	private double countBalance = 0.0;
+	
+	WithdrawStrategy strategy;
 
 	/** Capacity is maximum number of coins the purse can hold.
 	 *  Capacity is set when the purse is created and cannot be changed.
@@ -108,26 +112,38 @@ public class Purse extends Observable {
 	 *    or null if cannot withdraw requested amount.
 	 */
 	public Valuable[] withdraw( double amount ) {
-		List<Valuable> listWithdraw = new ArrayList<>();
-		Collections.sort(money);
-		for(int i=money.size()-1;i>=0;i--){
-			Valuable x = money.get(i);
-			if(x.getValue()<=amount){
-				amount = amount - x.getValue();
-				listWithdraw.add(x);
-			}
+		List<Valuable> listFromGreedyWithdraw = strategy.withdraw( amount, money );
+		Valuable[] listToReturn = new Valuable[ listFromGreedyWithdraw.size() ];
+		for( int i=0 ; i<listFromGreedyWithdraw.size() ; i++ ) {
+			listToReturn[i] = listFromGreedyWithdraw.get(i);
 		}
-		if(amount==0){
-			for(int i=0;i<listWithdraw.size();i++){
-				money.remove(listWithdraw.get(i));
-			}
-			Valuable[] listToReturn = new Valuable[listWithdraw.size()];
-			listWithdraw.toArray(listToReturn);
-			setChanged();
-			notifyObservers();
-			return listToReturn;
+		setChanged();
+		notifyObservers();
+//		System.out.println( "Purse : "+Arrays.toString( money.toArray() ) );
+		for( int i=0 ; i<listToReturn.length ; i++ ) {
+			money.remove( listToReturn[i] );
 		}
-		return null;
+		return listToReturn;
+//		List<Valuable> listWithdraw = new ArrayList<>();
+//		Collections.sort(money);
+//		for(int i=money.size()-1;i>=0;i--){
+//			Valuable x = money.get(i);
+//			if(x.getValue()<=amount){
+//				amount = amount - x.getValue();
+//				listWithdraw.add(x);
+//			}
+//		}
+//		if(amount==0){
+//			for(int i=0;i<listWithdraw.size();i++){
+//				money.remove(listWithdraw.get(i));
+//			}
+//			Valuable[] listToReturn = new Valuable[listWithdraw.size()];
+//			listWithdraw.toArray(listToReturn);
+//			setChanged();
+//			notifyObservers();
+//			return listToReturn;
+//		}
+//		return null;
 	}
 
 	/** 
@@ -137,6 +153,10 @@ public class Purse extends Observable {
 	public String toString() {
 		String ans = money.size()+" items with value "+this.getBalance()+" "+MoneyFactory.currency;
 		return ans;
+	}
+	
+	public void setWithdrawStrategy( WithdrawStrategy strategy ) {
+		this.strategy = strategy;
 	}
 	
 

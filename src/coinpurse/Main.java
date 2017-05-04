@@ -9,6 +9,8 @@ import javax.swing.UnsupportedLookAndFeelException;
 import coinpurse.gui.PurseBalanceGUI;
 import coinpurse.gui.PurseObserver;
 import coinpurse.gui.PurseStatusGUI;
+import coinpurse.strategy.GreedyWithdraw;
+import coinpurse.strategy.RecursiveWithdraw;
 
 /**
  * A main class to create objects and connect objects together.
@@ -30,15 +32,16 @@ public class Main {
      * @throws ClassNotFoundException 
      */
     public static void main( String[] args ) throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
-    	UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+//    	UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
     	Purse purseObject = new Purse( CAPACITY );
-    	PurseBalanceGUI observerBalance = new PurseBalanceGUI();
-    	PurseStatusGUI observerStatus = new PurseStatusGUI();
-    	purseObject.addObserver( observerBalance );
-    	purseObject.addObserver( observerStatus );
+    	purseObject.setWithdrawStrategy( new RecursiveWithdraw() );
+//    	PurseBalanceGUI observerBalance = new PurseBalanceGUI();
+//    	PurseStatusGUI observerStatus = new PurseStatusGUI();
+//    	purseObject.addObserver( observerBalance );
+//    	purseObject.addObserver( observerStatus );
     	ConsoleDialog UI = new ConsoleDialog( purseObject );
-    	observerBalance.run();
-    	observerStatus.run();
+//    	observerBalance.run();
+//    	observerStatus.run();
     	UI.run();    	
     }
 
