@@ -1,6 +1,7 @@
 package coinpurse;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -17,15 +18,44 @@ public class CoinUtil {
 	 * @param currency is the currency we want. Must not be null.
 	 * @return a new List containing only the elements from coinlist that have the requested currency.
 	 */
-	public static List<Valuable> filterByCurrency(final List<Valuable> coinlist, String currency) {
-		List<Valuable> coinlist2 = new ArrayList<Valuable>();
-		for(int i=0;i<coinlist.size();i++){
-			if(coinlist.get(i).getCurrency().equals(currency)){
-				coinlist2.add(coinlist.get(i));
+//	public static <E extends Valuable> List<E> filterByCurrency(final List<E> coinlist, String currency) {
+//		List<E> coinlist2 = new ArrayList<E>();
+//		for(int i=0;i<coinlist.size();i++){
+//			if(coinlist.get(i).getCurrency().equals(currency)){
+//				coinlist2.add( coinlist.get(i) );
+//			}
+//		}
+//		// return a list of coin references copied from coinlist.
+//		return coinlist2;
+//	}
+	public static <E extends Valuable> List<E> filterByCurrency(final List<E> coinlist, String currency) {
+		Predicate<E> notNull = new Predicate<E>() {
+
+			@Override
+			public boolean test(E t) {
+				if( !coinlist.equals( null ) ) {
+					return true;
+				}
+				else {
+					return false;
+				}
 			}
-		}
-		// return a list of coin references copied from coinlist.
-		return coinlist2;
+			
+		};
+		Predicate<E> filterCurrency = new Predicate<E>() {
+
+			@Override
+			public boolean test(E t) {
+				if( t.getCurrency().equals( currency ) ) {
+					return true;
+				}
+				else {
+					return false;
+				}
+			}
+			
+		};
+		return coinlist.stream().filter( notNull ).filter( filterCurrency ).collect( Collectors.toList() );
 	}
 
 
@@ -34,7 +64,8 @@ public class CoinUtil {
 	 * On return, the list (coins) will be ordered by currency.
 	 * @param coins is a List of Coin objects we want to sort. 
 	 */
-	public static void sortByCurrency(List<Valuable> coins) {
+	public static void sortByCurrency(List<? extends Valuable> coins) {
+		//List<Valuable> coins
 		CompareByCurrency compare = new CompareByCurrency();
 		coins.sort(compare);
 	}
@@ -128,6 +159,43 @@ public class CoinUtil {
 
 		}
 		System.out.println(); // end the line
+	}
+	
+	public static <E extends Comparable<? super E> > E max(E a,E b) {
+		if( a.compareTo( b ) > 0 ) {
+			return a;
+		}
+		else if( a.compareTo( b ) < 0 ) {
+			return b;
+		}
+		else {
+			return a;
+		}
+	}
+	
+	public static <E extends Comparable<? super E> > E max(E ...inputArray ) {
+		E max = inputArray[0];
+		if( inputArray.length==0 ) {
+			return null;
+		}
+		else if( inputArray.length==1 ) {
+			return max;
+		}
+		else {
+			for( int k=1 ; k<inputArray.length ; k++ ) {
+				
+				if( max.compareTo( inputArray[k] ) > 0 ) {
+					max = max;
+				}
+				else if( max.compareTo( inputArray[k] ) < 0 ) {
+					max = inputArray[k];
+				}
+				else {
+					max = inputArray[k];
+				}
+			}
+			return max;
+		}
 	}
 
 }

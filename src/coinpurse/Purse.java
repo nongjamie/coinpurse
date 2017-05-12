@@ -117,12 +117,11 @@ public class Purse extends Observable {
 		for( int i=0 ; i<listFromGreedyWithdraw.size() ; i++ ) {
 			listToReturn[i] = listFromGreedyWithdraw.get(i);
 		}
-		setChanged();
-		notifyObservers();
-//		System.out.println( "Purse : "+Arrays.toString( money.toArray() ) );
 		for( int i=0 ; i<listToReturn.length ; i++ ) {
 			money.remove( listToReturn[i] );
 		}
+		setChanged();
+		notifyObservers();
 		return listToReturn;
 //		List<Valuable> listWithdraw = new ArrayList<>();
 //		Collections.sort(money);

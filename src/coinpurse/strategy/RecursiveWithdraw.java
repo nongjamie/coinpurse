@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import coinpurse.Valuable;
 
@@ -25,6 +27,7 @@ public class RecursiveWithdraw implements WithdrawStrategy {
 			List<Valuable> temp2 = withdraw(amount , valuables.subList( 1 , size ));
 			if( temp1 != null ) {
 				temp1.add( first );
+				
 				return temp1;
 			}
 			if( temp2 != null ) {

@@ -8,6 +8,10 @@ public class BankNote extends AbstractValuable {
 	//Serialnumber of the banknote.
 	private long serialNumber;
 		
+	public BankNote( double values , String currency ) {
+		super( values , currency);
+	}
+	
 	/**
 	 * This is the constructor of BankNote.
 	 * A banknote with given value and currency.
