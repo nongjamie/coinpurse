@@ -9,6 +9,10 @@ import java.util.Observer;
 
 import coinpurse.Valuable;
 
+/**
+ * Withdraw with recursive strategy.
+ * @author Sathira Kittisukmongkol
+ */
 public class RecursiveWithdraw implements WithdrawStrategy {
 
 	@Override

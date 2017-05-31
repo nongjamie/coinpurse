@@ -6,6 +6,10 @@ import java.util.List;
 
 import coinpurse.Valuable;
 
+/**
+ * Withdraw with greedy strategy.
+ * @author Sathira Kittisukmongkol
+ */
 public class GreedyWithdraw implements WithdrawStrategy {
 
 	@Override

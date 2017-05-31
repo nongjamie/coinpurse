@@ -9,7 +9,6 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import coinpurse.gui.PurseBalanceGUI;
-import coinpurse.gui.PurseObserver;
 import coinpurse.gui.PurseStatusGUI;
 import coinpurse.strategy.GreedyWithdraw;
 import coinpurse.strategy.RecursiveWithdraw;

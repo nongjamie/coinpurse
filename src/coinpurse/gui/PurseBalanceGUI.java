@@ -13,6 +13,10 @@ import javax.swing.JTextArea;
 
 import coinpurse.Purse;
 
+/**
+ * GUI for purse balance.
+ * @author Sathira Kittisukmongkol
+ */
 public class PurseBalanceGUI implements Observer {
 	
 	JFrame frame;
